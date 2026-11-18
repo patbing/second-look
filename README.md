@@ -1,5 +1,7 @@
 # Second Look
 
+[![Made with pollinations.ai](https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg)](https://pollinations.ai/?ref=badge)
+
 Point your camera at something. One model explains what is in the photo and pins each claim to a spot. A second model, shown only that spot, says whether it is really there.
 
 Live: https://patbing.github.io/second-look/ · Built for Pollinations quest #20023.
