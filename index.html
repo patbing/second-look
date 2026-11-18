@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Look · point your camera, learn what you see, see what was checked</title>
+<meta name="description" content="Take a photo. One model explains what is in it, pinning each claim to a spot. A second model, shown only that spot, says whether it is really there.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@pollinations/ui@0.1.0-alpha.31/dist/connect.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Second Look</h1>
+    <p>Point your camera at something. One model explains what is in the photo and pins each claim to a spot. A second model, shown only that spot, says whether it is really there.</p>
+  </div>
+  <div class="topright">
+    <span id="spent" class="spent" hidden></span>
+    <polli-connect id="connect" budget="1" expiry="7"></polli-connect>
+    <span id="connect-fallback" class="hint" hidden>Sign-in unavailable. The recorded photos still work.</span>
+    <a class="made" href="https://pollinations.ai/?ref=badge" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg" alt="Made with pollinations.ai" height="28"></a>
+  </div>
+</header>
+
+<main>
+  <p id="notice" class="notice" role="status" aria-live="polite"></p>
+
+  <section class="panel" aria-label="Your photo">
+    <h2>Your photo</h2>
+    <p id="signin" class="hint">Sign in with Pollinations to send a photo. You pay with your own Pollen; the default models are free-tier.</p>
+    <div class="controls">
+      <label class="filebtn primary">Take a photo <input id="camera" type="file" accept="image/*" capture="environment" disabled></label>
+      <label class="filebtn">Choose a picture <input id="upload" type="file" accept="image/*" disabled></label>
+      <span id="cost" class="fine"></span>
+    </div>
+    <div id="liveresult" class="result" aria-live="polite"></div>
+  </section>
+
+  <section class="panel" aria-label="Recorded photos">
+    <h2>Recorded photos: try it without signing in</h2>
+    <p id="recmeta" class="fine"></p>
+    <div id="shots" class="takes"></div>
+    <div id="recresult" class="result"></div>
+    <p class="fine"><a id="credit" href="#" target="_blank" rel="noopener" hidden></a></p>
+  </section>
+
+  <section class="panel about" aria-label="How it works">
+    <h2>How it works</h2>
+    <div class="cols3">
+      <div><h3>Explained and pinned</h3><p>The photo goes to <code>z-ai/glm-5.3-flash</code> with a lettered grid drawn on it. It names 3 to 5 things it sees, each pinned to one grid cell, with how to spot it and one fact the photo cannot show.</p></div>
+      <div><h3>Checked blind</h3><p>Code crops each pinned cell. <code>openai/gpt-6-luna</code>, from another model family, sees only that crop, says what it sees, then answers yes or no: is the claimed thing there?</p></div>
+      <div><h3>The checker is tested too</h3><p>Every photo also gets a decoy question about something that is not there. If the checker says yes to the decoy, its confirmations on that photo are marked weak.</p></div>
+    </div>
+    <p class="fine">Green: confirmed. Red: disputed, the second look did not see it there. Grey: no clear answer. "Did you know" facts come from the model's knowledge and are not checked.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Your photo is resized in this tab and sent to the two models; nothing is stored. You pay with your own Pollen through Pollinations Connect, which keeps your key in this tab's sessionStorage. <a id="src" href="#">Source</a></p>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/look.js"></script>
+<script src="js/net.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

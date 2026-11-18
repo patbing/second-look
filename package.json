@@ -1,0 +1,7 @@
+{
+  "name": "second-look",
+  "private": true,
+  "description": "Point your camera: one model explains the photo pinned to spots, a second model checks each spot blind.",
+  "scripts": { "test": "node --test tests/*.test.js" },
+  "license": "MIT"
+}
