@@ -17,7 +17,7 @@ Before sign-in, recorded photos replay real model replies, with a person's own c
 
 ## Why these models
 
-A pilot on three photos (in `docs/`-style notes in the commit history) tried other pairs. Picking a label for each crop agreed with the photo about half the time; a yes/no question to `openai/gpt-6-luna` confirmed 10 of 10 true claims, refused 8 of 10 claims moved to the farthest cell, and refused 4 of 4 decoys.
+A pilot on three photos ([docs/pilot.md](docs/pilot.md)) tried other pairs. Picking a label for each crop agreed with the photo about half the time; a yes/no question to `openai/gpt-6-luna` confirmed 10 of 10 true claims, refused 8 of 10 claims moved to the farthest cell, and refused 4 of 4 decoys.
 
 ## Run it
 
