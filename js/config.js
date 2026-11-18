@@ -4,7 +4,7 @@
   window.SL = window.SL || {};
   window.SL.config = {
     // Public App Key (pk_...) registered for this page's address. Safe to commit.
-    APP_KEY: '',
+    APP_KEY: 'pk_Pf15b9XrDeHp9n5E',
     REPO_URL: 'https://github.com/patbing/second-look',
     API: 'https://gen.pollinations.ai',
     TIMEOUT_MS: 90000,
