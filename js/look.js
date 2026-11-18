@@ -61,10 +61,10 @@
     return { visible: j && typeof j.visible === 'boolean' ? j.visible : null, seen: clip(j && j.seen, 80) };
   }
 
-  // A decoy whose words share nothing with any claim label, so "not visible" is the right answer.
+  // A decoy whose words share nothing with any claim label or sentence, so "not visible" is the right answer.
   function decoy(list, rand) {
     var words = {};
-    list.forEach(function (c) { c.label.toLowerCase().split(/\W+/).forEach(function (w) { if (w.length > 2) words[w] = 1; }); });
+    list.forEach(function (c) { (c.label + ' ' + (c.claim || '')).toLowerCase().split(/\W+/).forEach(function (w) { if (w.length > 2) words[w] = 1; }); });
     var ok = DECOYS.filter(function (d) { return !d[0].toLowerCase().split(/\W+/).some(function (w) { return words[w]; }); });
     var pool = ok.length ? ok : DECOYS;
     return pool[Math.floor((rand == null ? Math.random() : rand) * pool.length) % pool.length];

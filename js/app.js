@@ -15,6 +15,7 @@
     return new Promise(function (ok, bad) { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = function () { bad(new Error('not an image this browser can read')); }; i.src = src; });
   }
   function fit(img) { // longest side to C.SIDE, as a canvas
+    if (!(img.naturalWidth || img.width) || !(img.naturalHeight || img.height)) throw new Error('that image has no size this browser can read');
     var s = Math.min(1, C.SIDE / Math.max(img.naturalWidth || img.width, img.naturalHeight || img.height));
     var c = document.createElement('canvas');
     c.width = Math.round((img.naturalWidth || img.width) * s); c.height = Math.round((img.naturalHeight || img.height) * s);
@@ -54,9 +55,11 @@
     r.claims.forEach(function (cl, k) {
       var i = L.COLS.indexOf(cl.cell[0]), j = L.ROWS.indexOf(cl.cell[1]), cw = c.width / 4, ch = c.height / 3;
       g.lineWidth = 6; g.strokeStyle = COLOR[verdictOf(cl)]; g.strokeRect(i * cw + 3, j * ch + 3, cw - 6, ch - 6);
-      var x = i * cw + 10 + (k % 2) * 40, y = j * ch + 10;
-      g.fillStyle = COLOR[verdictOf(cl)]; g.beginPath(); g.arc(x + 16, y + 16, 17, 0, 7); g.fill();
-      g.fillStyle = 'white'; g.font = 'bold 20px sans-serif'; g.textBaseline = 'middle'; g.textAlign = 'center'; g.fillText(String(k + 1), x + 16, y + 17);
+      // Pins are drawn large: on a phone the 1024 px canvas shows at about 300 px. Claims sharing a cell sit side by side.
+      var same = r.claims.slice(0, k).filter(function (o) { return o.cell === cl.cell; }).length;
+      var x = i * cw + 10 + same * 76, y = j * ch + 10;
+      g.fillStyle = COLOR[verdictOf(cl)]; g.beginPath(); g.arc(x + 34, y + 34, 34, 0, 7); g.fill();
+      g.fillStyle = 'white'; g.font = 'bold 40px sans-serif'; g.textBaseline = 'middle'; g.textAlign = 'center'; g.fillText(String(k + 1), x + 34, y + 36);
     });
     c.className = 'shot'; c.setAttribute('role', 'img');
     c.setAttribute('aria-label', 'The photo with ' + r.claims.length + ' pinned claims; green confirmed, red disputed, grey unclear.');
@@ -107,7 +110,7 @@
       list.appendChild(li);
     });
     wrap.appendChild(list); box.appendChild(wrap);
-    if (r.models) box.appendChild(h('p', 'fine', 'Explained by ' + r.models.describe + ', checked by ' + r.models.check + (r.ms ? ' · ' + (r.ms / 1000).toFixed(1) + ' s' : '') + '.'));
+    if (r.models) box.appendChild(h('p', 'fine', 'Explained by ' + r.models.describe + ', checked by ' + r.models.check + (r.live && r.ms ? ' · ' + (r.ms / 1000).toFixed(1) + ' s' : '') + '.'));
   }
 
   // ---------- recorded photos, no sign-in ----------
@@ -138,6 +141,8 @@
     var d = priceOf(C.DESCRIBE), k = priceOf(C.CHECK);
     return 3000 * d.img + 400 * d.in + C.DESCRIBE_MAX * d.out + 7 * (1500 * k.img + 120 * k.in + C.CHECK_MAX * k.out);
   }
+  // A reply without usage (error, timeout, empty) may still be billed: count that call at its worst case.
+  function charge(model, res, imgTok, txtTok, maxOut) { var p = priceOf(model); return res.usage ? cost(model, res.usage) : imgTok * p.img + txtTok * p.in + maxOut * p.out; }
   function cost(model, u) { var p = priceOf(model); return u ? (u.prompt_tokens || 0) * p.in + (u.completion_tokens || 0) * p.out : 0; }
   function freeCheck() {
     var p = app.prices || {}, bad = [C.DESCRIBE, C.CHECK].filter(function (id) { return !p[id] || p[id].paidOnly; });
@@ -162,13 +167,13 @@
   }
 
   function run(photo) {
-    var key = app.key, r = { claims: [], models: { describe: C.DESCRIBE, check: C.CHECK } }, t0 = Date.now();
+    var key = app.key, r = { live: true, claims: [], models: { describe: C.DESCRIBE, check: C.CHECK } }, t0 = Date.now();
     if (!key) { say('Signed out: the photo was not sent.', true); return Promise.resolve(); }
     app.ctrl = new AbortController(); var sig = app.ctrl.signal;
     say('Explaining the photo… (' + C.DESCRIBE + ')');
     $('liveresult').textContent = '';
     return N.chat(key, C.DESCRIBE, [{ type: 'text', text: L.DESCRIBE }, { type: 'image_url', image_url: { url: withGrid(photo) } }], C.DESCRIBE_MAX, sig).then(function (d) {
-      app.spent += d.ok ? cost(C.DESCRIBE, d.usage) : 0;
+      app.spent += charge(C.DESCRIBE, d, 3000, 400, C.DESCRIBE_MAX);
       if (!d.ok) { r.error = 'The explanation failed: ' + d.error + '. Nothing was checked.'; return; }
       var p = L.claims(d.text);
       if (p.unreadable || !p.claims.length) { r.error = 'The explanation came back without usable claims, so there is nothing to check.'; return; }
@@ -179,14 +184,14 @@
       var asks = p.claims.map(function (c) { return [c.cell, c.label, c.spot]; }).concat([[dcell, dc[0], dc[1]]]);
       return Promise.all(asks.map(function (a) {
         return N.chat(key, C.CHECK, [{ type: 'text', text: L.checkPrompt(a[1], a[2]) }, { type: 'image_url', image_url: { url: cropCanvas(photo, a[0]).toDataURL('image/jpeg', 0.85) } }], C.CHECK_MAX, sig)
-          .then(function (k) { app.spent += k.ok ? cost(C.CHECK, k.usage) : 0; return k.ok ? L.check(k.text) : { visible: null, seen: '', error: k.error }; });
+          .then(function (k) { app.spent += charge(C.CHECK, k, 1500, 120, C.CHECK_MAX); return k.ok ? L.check(k.text) : { visible: null, seen: '', error: k.error }; });
       })).then(function (res) {
         r.claims.forEach(function (c, k) { c.check = res[k]; });
         r.decoy.check = res[res.length - 1];
       });
     }).then(function () {
       r.ms = Date.now() - t0;
-      if (!r.error) say('');
+      say('');
       render($('liveresult'), photo, r);
     });
   }

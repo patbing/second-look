@@ -45,3 +45,8 @@ test('tally trusts confirmations only when the decoy was refused; agreement with
   assert.equal(L.tally(cl, null).trusted, false);
   assert.deepEqual(L.agreement(cl), { n: 2, same: 1 });
 });
+
+test('the decoy also avoids words in the claim sentences', () => {
+  const cl = [{ label: 'Silver notebook', claim: 'A laptop keyboard with a red cone sticker and a pizza box beside it.' }];
+  for (let r = 0; r < 1; r += 0.05) assert.ok(!/laptop|cone|pizza|red/.test(L.decoy(cl, r)[0]));
+});

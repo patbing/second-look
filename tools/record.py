@@ -2,7 +2,7 @@
     POLLINATIONS_KEY=sk_... python tools/record.py <max Pollen>
 Photos, titles and credits come from tools/photos.json (file paths relative to that file).
 Uses the same prompts, grid, crops and parsing as the page (prompts and parsing come from js/look.js through node).
-Writes recordings/looks.json and recordings/<n>.jpg. Person-checked answers are added afterwards with tools/human.py.
+Writes recordings/looks.json and recordings/<n>.jpg. A person's answer per claim (human, humanNote) is added to looks.json by hand afterwards.
 """
 import base64, io, json, os, random, subprocess, sys, time, urllib.request
 from PIL import Image, ImageDraw

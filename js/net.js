@@ -33,9 +33,9 @@
       return res.text().then(function (t) { // body read before the timer is cleared, so a stalled body still times out
         var j = null; try { j = JSON.parse(t); } catch (e) { /* not JSON */ }
         var ms = Date.now() - t0;
-        if (!res.ok) return { ok: false, ms: ms, error: 'HTTP ' + res.status + ': ' + String((j && j.error && (j.error.message || j.error)) || t).slice(0, 200) };
+        if (!res.ok) return { ok: false, ms: ms, usage: j && j.usage, error: 'HTTP ' + res.status + ': ' + String((j && j.error && (j.error.message || j.error)) || t).slice(0, 200) };
         var c = j && j.choices && j.choices[0], text = c && c.message && typeof c.message.content === 'string' ? c.message.content.trim() : '';
-        return text ? { ok: true, ms: ms, text: text, usage: j.usage } : { ok: false, ms: ms, error: 'empty reply' };
+        return text ? { ok: true, ms: ms, text: text, usage: j.usage } : { ok: false, ms: ms, error: 'empty reply', usage: j && j.usage };
       });
     }).catch(function (e) {
       if (signal && signal.aborted && !timedOut) return { ok: false, error: 'cancelled', cancelled: true };

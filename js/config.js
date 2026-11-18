@@ -8,7 +8,7 @@
     REPO_URL: 'https://github.com/patbing/second-look',
     API: 'https://gen.pollinations.ai',
     TIMEOUT_MS: 90000,
-    // Free (paid_only: false) defaults from different families, checked against the live model list before every photo.
+    // Free (paid_only: false) defaults from different families, checked against the live model list when the page loads.
     DESCRIBE: 'z-ai/glm-5.3-flash',
     CHECK: 'openai/gpt-6-luna',
     DESCRIBE_MAX: 3000, // reasoning models spend output tokens thinking; too few and the reply is empty

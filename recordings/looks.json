@@ -126,7 +126,7 @@
       "seen": "Metal kitchen tools and grater"
      },
      "human": true,
-     "humanNote": "a flat grater rather than a box grater, but a grater is there"
+     "humanNote": "a grater is there (a flat one, not a box), so the thing is right and only its kind is off"
     },
     {
      "cell": "B2",
@@ -165,7 +165,7 @@
       "seen": "A metal vegetable slicer"
      },
      "human": false,
-     "humanNote": "a metal wire slicer, not a mandoline"
+     "humanNote": "the tool there is a metal wire slicer; a mandoline is a different tool, so the claim names the wrong thing"
     },
     {
      "cell": "C3",
