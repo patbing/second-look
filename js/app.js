@@ -90,6 +90,8 @@
       top.appendChild(h('span', 'badge ' + v, v === 'yes' ? 'confirmed' : v === 'no' ? 'disputed' : 'unclear'));
       top.appendChild(h('span', 'label', cl.label));
       top.appendChild(h('span', 'cell', cl.cell));
+      if (typeof cl.human === 'boolean' && cl.check && typeof cl.check.visible === 'boolean' && cl.human !== cl.check.visible)
+        top.appendChild(h('span', 'differ', 'a person says ' + (cl.human ? 'it is there' : 'it is not')));
       li.appendChild(top);
       li.appendChild(h('p', null, cl.claim));
       var more = h('div', 'more'); more.hidden = true;

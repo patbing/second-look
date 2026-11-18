@@ -12,7 +12,7 @@ API = 'https://gen.pollinations.ai'
 KEY = os.environ['POLLINATIONS_KEY']
 CAP = float(sys.argv[1])
 PHOTOS = json.load(open(os.path.join(ROOT, 'tools', 'photos.json'), encoding='utf-8'))
-DESCRIBE, CHECK, D_MAX, C_MAX, SIDE, CROP_MIN = 'z-ai/glm-5.3-flash', 'openai/gpt-6-luna', 2000, 600, 1024, 512
+DESCRIBE, CHECK, D_MAX, C_MAX, SIDE, CROP_MIN = 'z-ai/glm-5.3-flash', 'openai/gpt-6-luna', 3000, 600, 1024, 512
 spent = 0.0
 
 

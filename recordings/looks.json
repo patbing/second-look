@@ -1,0 +1,283 @@
+{
+ "recordedAt": "2026-11-18T10:24:42Z",
+ "models": {
+  "describe": "z-ai/glm-5.3-flash",
+  "check": "openai/gpt-6-luna"
+ },
+ "spentUpperBound": 0.0041,
+ "looks": [
+  {
+   "id": "p1",
+   "title": "Canyon from a viewpoint",
+   "credit": "Grand Canyon view from Pima Point, Chensiyuan, CC BY-SA 4.0, Wikimedia Commons",
+   "source": "https://commons.wikimedia.org/wiki/File:Grand_Canyon_view_from_Pima_Point_2010.jpg",
+   "image": "1.jpg",
+   "models": {
+    "describe": "z-ai/glm-5.3-flash",
+    "check": "openai/gpt-6-luna"
+   },
+   "summary": "A sweeping view into the Grand Canyon, with the muddy Colorado River winding through the inner gorge beneath layered red rock buttes under a cloudy sky.",
+   "claims": [
+    {
+     "cell": "B3",
+     "label": "Colorado River",
+     "claim": "The muddy, reddish-brown Colorado River curves through the bottom of the inner gorge.",
+     "spot": "Follow the winding brown ribbon of water near the bottom-center of the frame.",
+     "know": "The Colorado River carved the Grand Canyon to a depth of over a mile over roughly 5-6 million years.",
+     "check": {
+      "visible": true,
+      "seen": "A winding river through canyon"
+     },
+     "human": true
+    },
+    {
+     "cell": "D2",
+     "label": "Sunlit canyon buttes",
+     "claim": "Warm, sunlit ridges and buttes of layered sedimentary rock rise on the right side of the gorge.",
+     "spot": "The brightest orange and tan rock faces, catching low-angle sunlight on the right.",
+     "know": "The distinct bands are limestone, sandstone, and shale layers deposited over hundreds of millions of years.",
+     "check": {
+      "visible": true,
+      "seen": "Layered sunlit canyon cliffs"
+     },
+     "human": true
+    },
+    {
+     "cell": "B1",
+     "label": "Cloudy sky",
+     "claim": "A gray, overcast sky filled with layered clouds hangs above the far canyon rim.",
+     "spot": "The upper third of the photo, above the hazy horizon of distant plateaus.",
+     "know": "Grand Canyon's elevation of about 7,000 feet on the rim makes weather there markedly cooler than the river below.",
+     "check": {
+      "visible": true,
+      "seen": "Clouds above distant canyon"
+     },
+     "human": true
+    },
+    {
+     "cell": "A2",
+     "label": "Shadowed green slope",
+     "claim": "A broad slope in shadow, dotted with muted green desert vegetation, fills the left-middle of the view.",
+     "spot": "The dark, low-contrast hillside with sparse green-gray shrubs on the left.",
+     "know": "Vegetation there includes pinyon pine and juniper, which survive on limited rainfall of around 10-15 inches per year.",
+     "check": {
+      "visible": true,
+      "seen": "Layered canyon hillsides"
+     },
+     "human": true
+    },
+    {
+     "cell": "C2",
+     "label": "Inner plateau",
+     "claim": "A sunlit, flattish plateau cut by side drainages sits in the middle of the canyon between the rims.",
+     "spot": "The pale, striated terrace in the center with visible erosion channels.",
+     "know": "Such benches are formed by resistant rock layers, like the Bright Angel Shale, that erode more slowly than rock above and below.",
+     "check": {
+      "visible": true,
+      "seen": "Layered canyon and eroded plateau"
+     },
+     "human": true
+    }
+   ],
+   "dropped": 0,
+   "raw": "{\"summary\":\"A sweeping view into the Grand Canyon, with the muddy Colorado River winding through the inner gorge beneath layered red rock buttes under a cloudy sky.\",\"claims\":[{\"cell\":\"B3\",\"label\":\"Colorado River\",\"claim\":\"The muddy, reddish-brown Colorado River curves through the bottom of the inner gorge.\",\"how_to_spot\":\"Follow the winding brown ribbon of water near the bottom-center of the frame.\",\"know\":\"The Colorado River carved the Grand Canyon to a depth of over a mile over roughly 5-6 million years.\"},{\"cell\":\"D2\",\"label\":\"Sunlit canyon buttes\",\"claim\":\"Warm, sunlit ridges and buttes of layered sedimentary rock rise on the right side of the gorge.\",\"how_to_spot\":\"The brightest orange and tan rock faces, catching low-angle sunlight on the right.\",\"know\":\"The distinct bands are limestone, sandstone, and shale layers deposited over hundreds of millions of years.\"},{\"cell\":\"B1\",\"label\":\"Cloudy sky\",\"claim\":\"A gray, overcast sky filled with layered clouds hangs above the far canyon rim.\",\"how_to_spot\":\"The upper third of the photo, above the hazy horizon of distant plateaus.\",\"know\":\"Grand Canyon's elevation of about 7,000 feet on the rim makes weather there markedly cooler than the river below.\"},{\"cell\":\"A2\",\"label\":\"Shadowed green slope\",\"claim\":\"A broad slope in shadow, dotted with muted green desert vegetation, fills the left-middle of the view.\",\"how_to_spot\":\"The dark, low-contrast hillside with sparse green-gray shrubs on the left.\",\"know\":\"Vegetation there includes pinyon pine and juniper, which survive on limited rainfall of around 10-15 inches per year.\"},{\"cell\":\"C2\",\"label\":\"Inner plateau\",\"claim\":\"A sunlit, flattish plateau cut by side drainages sits in the middle of the canyon between the rims.\",\"how_to_spot\":\"The pale, striated terrace in the center with visible erosion channels.\",\"know\":\"Such benches are formed by resistant rock layers, like the Bright Angel Shale, that erode more slowly than rock above and below.\"}]}",
+   "decoy": {
+    "label": "a slice of pizza",
+    "cell": "B1",
+    "check": {
+     "visible": false,
+     "seen": "Grand Canyon under cloudy skies"
+    }
+   },
+   "ms": 60966
+  },
+  {
+   "id": "p2",
+   "title": "Kitchen utensils on a rail",
+   "credit": "Kitchen utensils, Darren Lewis, CC0, Wikimedia Commons",
+   "source": "https://commons.wikimedia.org/wiki/File:Kitchen_utensils.jpg",
+   "image": "2.jpg",
+   "models": {
+    "describe": "z-ai/glm-5.3-flash",
+    "check": "openai/gpt-6-luna"
+   },
+   "summary": "A close-up of assorted kitchen utensils—including a whisk, grater, spatulas, and a slicer—hanging on hooks against a white tiled wall.",
+   "claims": [
+    {
+     "cell": "C2",
+     "label": "Wire whisk",
+     "claim": "A chrome balloon whisk with many thin wires hangs prominently in the center of the photo.",
+     "spot": "Cluster of shiny looped wires with a black ring where they meet the handle.",
+     "know": "Its wires are designed to whip air into egg whites or cream for meringues and mousses.",
+     "check": {
+      "visible": true,
+      "seen": "A shiny metal wire whisk"
+     },
+     "human": true
+    },
+    {
+     "cell": "D2",
+     "label": "Box grater",
+     "claim": "A stainless steel box grater with punched shredding holes stands on the right side.",
+     "spot": "Tall rectangular metal panel with rows of raised grating teeth.",
+     "know": "Standard box graters have four sides with different coarseness levels, from zesting to slicing.",
+     "check": {
+      "visible": true,
+      "seen": "Metal kitchen tools and grater"
+     },
+     "human": true,
+     "humanNote": "a flat grater rather than a box grater, but a grater is there"
+    },
+    {
+     "cell": "B2",
+     "label": "Slotted spatula",
+     "claim": "A black slotted turner with long parallel openings hangs diagonally down the middle-left.",
+     "spot": "Wide black plastic blade with lengthwise slots running down its face.",
+     "know": "The slots let hot grease or water drain away so food stays crisp.",
+     "check": {
+      "visible": false,
+      "seen": "Kitchen utensils hanging together"
+     },
+     "human": false,
+     "humanNote": "only the black handle is in this cell; the slotted head is lower down"
+    },
+    {
+     "cell": "A3",
+     "label": "Skimmer spoon",
+     "claim": "A black skimmer spoon with round draining holes shows at the lower left.",
+     "spot": "Bowl-shaped head pierced with several large circular holes.",
+     "know": "Skimmers are used to lift food from boiling water or to skim foam from stocks and jams.",
+     "check": {
+      "visible": false,
+      "seen": "Perforated kitchen utensils"
+     },
+     "human": true,
+     "humanNote": "the perforated black skimmer fills the crop"
+    },
+    {
+     "cell": "D1",
+     "label": "V-slicer mandoline",
+     "claim": "A metal mandoline slicer with a V-shaped blade and gripping teeth hangs at the top right.",
+     "spot": "Shiny steel surface with vertical slit blades and a round safety-grip piece.",
+     "know": "Mandolines can be adjusted for paper-thin slices or julienne cuts, but cause many kitchen cuts.",
+     "check": {
+      "visible": true,
+      "seen": "A metal vegetable slicer"
+     },
+     "human": false,
+     "humanNote": "a metal wire slicer, not a mandoline"
+    },
+    {
+     "cell": "C3",
+     "label": "Ladle",
+     "claim": "The deep black bowl of a ladle peeks out at the bottom center-right below the whisk.",
+     "spot": "Rounded cup-shaped scooping end behind the whisk wires.",
+     "know": "Ladles are sized by milliliters so servings of soup or sauce are consistent.",
+     "check": {
+      "visible": false,
+      "seen": "Whisk beside a black pan"
+     },
+     "human": true,
+     "humanNote": "the black ladle bowl is at the bottom of the crop"
+    }
+   ],
+   "dropped": 0,
+   "raw": "{\"summary\":\"A close-up of assorted kitchen utensils—including a whisk, grater, spatulas, and a slicer—hanging on hooks against a white tiled wall.\",\"claims\":[{\"cell\":\"C2\",\"label\":\"Wire whisk\",\"claim\":\"A chrome balloon whisk with many thin wires hangs prominently in the center of the photo.\",\"how_to_spot\":\"Cluster of shiny looped wires with a black ring where they meet the handle.\",\"know\":\"Its wires are designed to whip air into egg whites or cream for meringues and mousses.\"},{\"cell\":\"D2\",\"label\":\"Box grater\",\"claim\":\"A stainless steel box grater with punched shredding holes stands on the right side.\",\"how_to_spot\":\"Tall rectangular metal panel with rows of raised grating teeth.\",\"know\":\"Standard box graters have four sides with different coarseness levels, from zesting to slicing.\"},{\"cell\":\"B2\",\"label\":\"Slotted spatula\",\"claim\":\"A black slotted turner with long parallel openings hangs diagonally down the middle-left.\",\"how_to_spot\":\"Wide black plastic blade with lengthwise slots running down its face.\",\"know\":\"The slots let hot grease or water drain away so food stays crisp.\"},{\"cell\":\"A3\",\"label\":\"Skimmer spoon\",\"claim\":\"A black skimmer spoon with round draining holes shows at the lower left.\",\"how_to_spot\":\"Bowl-shaped head pierced with several large circular holes.\",\"know\":\"Skimmers are used to lift food from boiling water or to skim foam from stocks and jams.\"},{\"cell\":\"D1\",\"label\":\"V-slicer mandoline\",\"claim\":\"A metal mandoline slicer with a V-shaped blade and gripping teeth hangs at the top right.\",\"how_to_spot\":\"Shiny steel surface with vertical slit blades and a round safety-grip piece.\",\"know\":\"Mandolines can be adjusted for paper-thin slices or julienne cuts, but cause many kitchen cuts.\"},{\"cell\":\"C3\",\"label\":\"Ladle\",\"claim\":\"The deep black bowl of a ladle peeks out at the bottom center-right below the whisk.\",\"how_to_spot\":\"Rounded cup-shaped scooping end behind the whisk wires.\",\"know\":\"Ladles are sized by milliliters so servings of soup or sauce are consistent.\"}]}",
+   "decoy": {
+    "label": "a traffic cone",
+    "cell": "D2",
+    "check": {
+     "visible": false,
+     "seen": "Metal kitchen utensils"
+    }
+   },
+   "ms": 67167
+  },
+  {
+   "id": "p3",
+   "title": "Cat on a wall",
+   "credit": "Cat November 2010-1a, Alvesgaspar, CC BY-SA 3.0, Wikimedia Commons",
+   "source": "https://commons.wikimedia.org/wiki/File:Cat_November_2010-1a.jpg",
+   "image": "3.jpg",
+   "models": {
+    "describe": "z-ai/glm-5.3-flash",
+    "check": "openai/gpt-6-luna"
+   },
+   "summary": "A tabby cat with green eyes sits alertly on a whitewashed stone wall against a blurred backdrop of bare branches and blue sky.",
+   "claims": [
+    {
+     "cell": "B1",
+     "label": "Green-eyed cat face",
+     "claim": "The cat's head faces the camera squarely, with pale green eyes, perked ears, and an orange-pink nose.",
+     "spot": "Centered in the top-middle cell between the two grid lines crossing the ears and nose.",
+     "know": "The green eye color comes from low melanin in the iris, a trait more common in cats with mackerel tabby coats.",
+     "check": {
+      "visible": true,
+      "seen": "Green-eyed tabby cat face"
+     },
+     "human": true
+    },
+    {
+     "cell": "B2",
+     "label": "White muzzle and whiskers",
+     "claim": "Bright white fur on the chin and muzzle stands out beneath the nose, with long white whiskers sweeping outward.",
+     "spot": "Just below the nose at the middle-left intersection of the grid.",
+     "know": "Whiskers are rooted three times deeper than regular fur and are roughly as sensitive as a human's fingertips.",
+     "check": {
+      "visible": true,
+      "seen": "Close-up of a tabby cat"
+     },
+     "human": true
+    },
+    {
+     "cell": "B3",
+     "label": "Front paws on wall",
+     "claim": "The cat's striped forelegs stretch straight down, with both front paws planted on the rough white ledge.",
+     "spot": "Bottom-middle-left cell where the legs meet the pale stone at the photo's bottom edge.",
+     "know": "Cats are digitigrade, meaning they walk on their toe bones rather than the flats of their feet.",
+     "check": {
+      "visible": true,
+      "seen": "Striped cat paws on stone"
+     },
+     "human": true
+    },
+    {
+     "cell": "C3",
+     "label": "Striped tabby haunches",
+     "claim": "The seated hindquarters fill the lower-right of the body, showing dense dark stripes over brownish fur.",
+     "spot": "Lower-center-right cell with the darkest, most tightly banded fur on the cat.",
+     "know": "Tabby is a coat pattern, not a breed, and every tabby's stripe layout is unique like a fingerprint.",
+     "check": {
+      "visible": true,
+      "seen": "Close-up of striped tabby fur"
+     },
+     "human": true
+    },
+    {
+     "cell": "A1",
+     "label": "Bare branches and sky",
+     "claim": "Thin leafless twigs crisscross a soft blue sky, heavily blurred in the upper-left background.",
+     "spot": "Top-left cell, everywhere the cat is not, with gray branching lines over blue.",
+     "know": "The blur comes from a shallow depth of field, meaning the camera used a wide lens aperture focused close up.",
+     "check": {
+      "visible": true,
+      "seen": "Cat beside bare branches and sky"
+     },
+     "human": true
+    }
+   ],
+   "dropped": 0,
+   "raw": "```json\n{\n  \"summary\": \"A tabby cat with green eyes sits alertly on a whitewashed stone wall against a blurred backdrop of bare branches and blue sky.\",\n  \"claims\": [\n    {\n      \"cell\": \"B1\",\n      \"label\": \"Green-eyed cat face\",\n      \"claim\": \"The cat's head faces the camera squarely, with pale green eyes, perked ears, and an orange-pink nose.\",\n      \"how_to_spot\": \"Centered in the top-middle cell between the two grid lines crossing the ears and nose.\",\n      \"know\": \"The green eye color comes from low melanin in the iris, a trait more common in cats with mackerel tabby coats.\"\n    },\n    {\n      \"cell\": \"B2\",\n      \"label\": \"White muzzle and whiskers\",\n      \"claim\": \"Bright white fur on the chin and muzzle stands out beneath the nose, with long white whiskers sweeping outward.\",\n      \"how_to_spot\": \"Just below the nose at the middle-left intersection of the grid.\",\n      \"know\": \"Whiskers are rooted three times deeper than regular fur and are roughly as sensitive as a human's fingertips.\"\n    },\n    {\n      \"cell\": \"B3\",\n      \"label\": \"Front paws on wall\",\n      \"claim\": \"The cat's striped forelegs stretch straight down, with both front paws planted on the rough white ledge.\",\n      \"how_to_spot\": \"Bottom-middle-left cell where the legs meet the pale stone at the photo's bottom edge.\",\n      \"know\": \"Cats are digitigrade, meaning they walk on their toe bones rather than the flats of their feet.\"\n    },\n    {\n      \"cell\": \"C3\",\n      \"label\": \"Striped tabby haunches\",\n      \"claim\": \"The seated hindquarters fill the lower-right of the body, showing dense dark stripes over brownish fur.\",\n      \"how_to_spot\": \"Lower-center-right cell with the darkest, most tightly banded fur on the cat.\",\n      \"know\": \"Tabby is a coat pattern, not a breed, and every tabby's stripe layout is unique like a fingerprint.\"\n    },\n    {\n      \"cell\": \"A1\",\n      \"label\": \"Bare branches and sky\",\n      \"claim\": \"Thin leafless twigs crisscross a soft blue sky, heavily blurred in the upper-left background.\",\n      \"how_to_spot\": \"Top-left cell, everywhere the cat is not, with gray branching lines over blue.\",\n      \"know\": \"The blur comes from a shallow depth of field, meaning the camera used a wide lens aperture focused close up.\"\n    }\n  ]\n}\n```",
+   "decoy": {
+    "label": "a laptop keyboard",
+    "cell": "B3",
+    "check": {
+     "visible": false,
+     "seen": "Cat paws on snowy ledge"
+    }
+   },
+   "ms": 72052
+  }
+ ],
+ "human": "Each claim was checked against its crop by a person (the app author) after recording."
+}

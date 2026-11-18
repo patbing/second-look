@@ -11,7 +11,7 @@
     // Free (paid_only: false) defaults from different families, checked against the live model list before every photo.
     DESCRIBE: 'z-ai/glm-5.3-flash',
     CHECK: 'openai/gpt-6-luna',
-    DESCRIBE_MAX: 2000, // reasoning models spend output tokens thinking; too few and the reply is empty
+    DESCRIBE_MAX: 3000, // reasoning models spend output tokens thinking; too few and the reply is empty
     CHECK_MAX: 600,
     SIDE: 1024, // the photo is resized to this longest side before it is sent
     CROP_MIN: 512,
